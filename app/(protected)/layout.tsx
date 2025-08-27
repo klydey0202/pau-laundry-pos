@@ -5,15 +5,24 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 // import { hasEnvVars } from "@/lib/utils";
 import Header from "@/components/header";
 import HeaderMobile from "@/components/header-mobile";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 // import Link from "next/link";
 // import PauLogo from '../../assets/images/logos/palaundry_logo_raw_stroked.png'
 // import Image from "next/image";
 
-export default function ProtectedLayout({
+export default async function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const supabase = await createClient();
+  
+  const { data, error } = await supabase.auth.getClaims();
+  if (error || !data?.claims) {
+    redirect("/auth/login");
+  }
+
   return (
     <main className="min-h-screen flex flex-col items-center">
       <div className="flex-1 w-full flex flex-col items-center">
