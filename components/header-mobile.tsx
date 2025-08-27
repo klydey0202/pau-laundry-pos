@@ -9,13 +9,14 @@ import { SIDENAV_ITEMS } from '../app/constants';
 import { SideNavItem } from '../app/types';
 import { Icon } from '@iconify/react';
 import { motion, useCycle } from 'framer-motion';
+import { Variants } from "framer-motion";
 
 type MenuItemWithSubMenuProps = {
   item: SideNavItem;
   toggleOpen: () => void;
 };
 
-const sidebar = {
+const sidebar: Variants = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 100% 0)`,
     transition: {
@@ -36,7 +37,7 @@ const sidebar = {
 
 const HeaderMobile = () => {
   const pathname = usePathname();
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLElement>(null);
   const { height } = useDimensions(containerRef);
   const [isOpen, toggleOpen] = useCycle(false, true);
 
@@ -93,7 +94,7 @@ const HeaderMobile = () => {
 
 export default HeaderMobile;
 
-const MenuToggle = ({ toggle }: { toggle: any }) => (
+const MenuToggle = ({ toggle }: { toggle: () => void }) => (
   <button
     onClick={toggle}
     className="pointer-events-auto absolute right-4 top-[14px] z-30"
@@ -123,7 +124,7 @@ const MenuToggle = ({ toggle }: { toggle: any }) => (
   </button>
 );
 
-const Path = (props: any) => (
+const Path = (props: React.ComponentProps<typeof motion.path>) => (
   <motion.path
     fill="transparent"
     strokeWidth="2"
@@ -225,7 +226,7 @@ const variants = {
   },
 };
 
-const useDimensions = (ref: any) => {
+const useDimensions = (ref: React.RefObject<HTMLElement | null>) => {
   const dimensions = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
@@ -233,7 +234,6 @@ const useDimensions = (ref: any) => {
       dimensions.current.width = ref.current.offsetWidth;
       dimensions.current.height = ref.current.offsetHeight;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref]);
 
   return dimensions.current;
