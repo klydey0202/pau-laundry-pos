@@ -8,6 +8,8 @@ import { usePathname } from 'next/navigation';
 import { SIDENAV_ITEMS } from '../app/constants';
 import { SideNavItem } from '../app/types';
 import { Icon } from '@iconify/react';
+import Image from 'next/image';
+import PauLogo from '../assets/images/logos/palaundry_logo_raw_stroked.png'
 
 const SideNav = () => {
   return (
@@ -17,8 +19,9 @@ const SideNav = () => {
           href="/"
           className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
         >
-          <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
-          <span className="font-bold text-xl hidden md:flex">Logo</span>
+          {/* <span className="h-7 w-7 bg-zinc-300 rounded-lg" /> */}
+          <Image src={PauLogo} alt="Pau-Laundry Logo" width={32} height={32} />
+          <span className="font-bold text-lg hidden md:flex">Pau-Laundry</span>
         </Link>
 
         <div className="flex flex-col space-y-2  md:px-6 ">

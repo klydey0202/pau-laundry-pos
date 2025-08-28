@@ -7,6 +7,8 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 
 import useScroll from '../hooks/use-scroll';
 import { cn } from '@/lib/utils';
+import PauLogo from '../assets/images/logos/palaundry_logo_raw_stroked.png'
+import Image from 'next/image';
 
 const Header = () => {
     const scrolled = useScroll(5);
@@ -28,7 +30,8 @@ const Header = () => {
                 href="/"
                 className="flex flex-row space-x-3 items-center justify-center md:hidden"
             >
-                <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
+                {/* <span className="h-7 w-7 bg-zinc-300 rounded-lg" /> */}
+                <Image src={PauLogo} alt="Pau-Laundry Logo" width={28} height={28} />
                 <span className="font-bold text-xl flex ">Pau-Laundry</span>
             </Link>
             </div>

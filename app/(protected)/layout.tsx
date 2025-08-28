@@ -1,7 +1,7 @@
 // import { DeployButton } from "@/components/deploy-button";
 // import { EnvVarWarning } from "@/components/env-var-warning";
 // import { AuthButton } from "@/components/auth-button";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+// import { ThemeSwitcher } from "@/components/theme-switcher";
 // import { hasEnvVars } from "@/lib/utils";
 import Header from "@/components/header";
 import HeaderMobile from "@/components/header-mobile";
@@ -42,7 +42,7 @@ export default async function ProtectedLayout({
             </MarginWithWrapper>
           </div>
           
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-6">
+        {/* <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-6">
           <p>
             Powered by{" "}
             <span className="font-bold hover:underline">
@@ -50,7 +50,7 @@ export default async function ProtectedLayout({
             </span>
           </p>
           <ThemeSwitcher />
-        </footer>
+        </footer> */}
       </div>
     </main>
   );
